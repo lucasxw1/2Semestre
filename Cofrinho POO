@@ -1,0 +1,178 @@
+//@author Lucas Machado Garcia 19111270-5
+public class Cofrinho {
+    public int prox = 0;
+    public Moeda[] cofre;
+    public Moeda m1;
+    
+    public Cofrinho(){
+        cofre = new Moeda[20];
+        
+    }
+    
+    public NomeMoeda retiraMoeda(){
+        if (cofre[0]== null) {
+            System.out.println("Nao há moedas para retirar");
+            return null;
+        } else {
+            Moeda moeda = cofre[prox-1];
+            cofre[prox-1] = null;
+            prox--;
+            return moeda.getNomeMoeda();
+        }
+            
+        
+    }
+    
+    public void insereMoeda(NomeMoeda tipo){
+        m1 = new Moeda(tipo);
+        if (cofre[cofre.length-1] == null) {
+            cofre[prox] = m1;
+            prox++;
+        } else {
+            System.out.println("COFRE CHEIO!!!!");
+        }
+    }
+    
+    public int QntMoedas(){
+        int vazio = 0;
+        for (int i = 0; i < cofre.length; i++) {
+            if (cofre[i] == null) {
+                vazio++;
+            }
+ 
+        }
+        return cofre.length-vazio;
+    }
+    
+    public int QntMoedasTipo(NomeMoeda tipo){
+        int aux = 0;
+        for (int i = 0; i < cofre.length; i++) {
+            if (cofre[i]!= null) {
+                if (cofre[i].getNomeMoeda().equals(tipo)) {
+                aux++;
+            }
+            }
+            
+        }
+        return aux;
+    }
+    
+    public int valorTotalCent(){
+        int somaCent = 0;
+        for (int i = 0; i < cofre.length; i++) {
+            if (cofre[i]!= null) {
+                somaCent = somaCent + cofre[i].getValorCentavos();
+            }
+        }
+        return somaCent;
+    }
+    
+    public double valorTotalReais(){
+        double somaReais = 0;
+        for (int i = 0; i < cofre.length; i++) {
+            if (cofre[i]!= null) {
+                somaReais = somaReais + cofre[i].getValorReais();
+            }
+        }
+        return somaReais;
+    }
+    
+    
+            
+}
+
+
+
+
+
+
+
+//@author Lucas Machado Garcia 19111270-5
+import java.util.Scanner;
+public class app {
+   public static void main(String args[]){
+       Scanner ler = new Scanner(System.in);
+       Cofrinho cofre = new Cofrinho();
+        cofre.insereMoeda(NomeMoeda.UmReal);
+        cofre.insereMoeda(NomeMoeda.UmReal);
+        cofre.insereMoeda(NomeMoeda.UmReal);
+        cofre.insereMoeda(NomeMoeda.UmReal);
+        cofre.insereMoeda(NomeMoeda.Cinquenta);
+        cofre.insereMoeda(NomeMoeda.Cinquenta);
+        cofre.insereMoeda(NomeMoeda.Cinquenta);
+        cofre.insereMoeda(NomeMoeda.Cinquenta);
+        cofre.insereMoeda(NomeMoeda.Cinquenta);
+        cofre.insereMoeda(NomeMoeda.Cinquenta);
+        //2)a
+        System.out.println(cofre.QntMoedas());
+        //2)b
+        System.out.println(cofre.QntMoedasTipo(NomeMoeda.UmReal));
+        //2)c
+        System.out.println(cofre.QntMoedasTipo(NomeMoeda.Cinquenta));
+        //2)d
+        System.out.println(cofre.valorTotalCent());
+        //2)e
+        System.out.println(cofre.valorTotalReais());
+        //2)f
+        cofre.retiraMoeda();
+        cofre.retiraMoeda();
+        
+       System.out.println(cofre.valorTotalCent());
+       
+       
+       /*/3) EXTRA; a funcao inserir moeda nao ta inserindo moeda e eu nao faco ideia o por que, o resto ta funcionando 100%
+       int op = 0;
+       int ap = 0;
+       do{ System.out.println("Total em reais no cofrinho: " + cofre.valorTotalReais());
+           System.out.println("Digite 1 para inserir uma moeda");
+           System.out.println("Digite 2 para retirar uma moeda");
+           System.out.println("Digite 3 para sair");
+           op = ler.nextInt();
+           switch(op){
+               case 1:
+                   System.out.println("Qual é o tipo da moeda?");
+                   System.out.println("Digite 1 para moeda de UmReal; 2 para moeda de Cinquenta; 3 para moeda de VinteCinco, 4 para moeda de Dez; 5 para moeda de Cinco; 6 para moeda de Um; 7 caso queria sair");
+                   ap = ler.nextInt();
+                   switch(ap){
+                       case 1:
+                        cofre.insereMoeda(NomeMoeda.UmReal);
+                        break;
+                       case 2:
+                        cofre.insereMoeda(NomeMoeda.Cinquenta);
+                        break;
+                       case 3:
+                        cofre.insereMoeda(NomeMoeda.VinteCinco);
+                        break;
+                       case 4:
+                        cofre.insereMoeda(NomeMoeda.Dez);
+                        break;
+                       case 5:
+                        cofre.insereMoeda(NomeMoeda.Cinco);
+                        break;
+                       case 6:
+                        cofre.insereMoeda(NomeMoeda.Um);
+                        break;
+                       case 7:
+                        op = 0;
+                        break;
+                           
+                   }
+               case 2:
+                   cofre.retiraMoeda();
+                   break;
+               case 3:
+                   op = 0;
+                   
+           }
+                  
+           
+           
+       }while(op !=0);*/
+   } 
+}
+
+
+
+
+
+
