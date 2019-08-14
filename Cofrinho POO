@@ -120,7 +120,7 @@ public class app {
        System.out.println(cofre.valorTotalCent());
        
        
-       /*/3) EXTRA; a funcao inserir moeda nao ta inserindo moeda e eu nao faco ideia o por que, o resto ta funcionando 100%
+      
        int op = 0;
        int ap = 0;
        do{ System.out.println("Total em reais no cofrinho: " + cofre.valorTotalReais());
@@ -156,7 +156,7 @@ public class app {
                         op = 0;
                         break;
                            
-                   }
+                   }break;
                case 2:
                    cofre.retiraMoeda();
                    break;
@@ -167,7 +167,7 @@ public class app {
                   
            
            
-       }while(op !=0);*/
+       }while(op !=0);
    } 
 }
 
