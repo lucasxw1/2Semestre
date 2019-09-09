@@ -1,0 +1,80 @@
+public class Passagem {
+    private String cpf;
+    private String nome;
+    private String assento;
+    private double custo;
+    
+    
+    public Passagem(String cpf, String nome){
+        this.cpf = cpf;
+        this.nome = nome;
+       
+    };
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getAssento() {
+        return assento;
+    }
+
+    public void setAssento(String assento) {
+        this.assento = assento;
+    }
+
+    public double getCusto() {
+        return custo;
+    }
+
+    public void setCusto(double custo) {
+        this.custo = custo;
+    }
+    
+    public double custoBagagem(int qtdade, int[] pesos){
+        double soma = 0;
+        for (int i = 0; i < pesos.length; i++) {
+            soma = soma + pesos[i]*0.50;
+        }
+        this.custo = this.custo + soma;
+        return soma;
+     }
+    
+    public double defineAssento(String a){
+        this.assento = a;
+        this.custo = this.custo + 5.00;
+        return 5.00;
+    }
+}
+
+
+
+
+
+
+
+
+
+public class Economy extends Passagem{
+    
+    public Economy(String cpf, String nome) {
+        super(cpf, nome);
+    }
+    
+    @Override
+    public double custoBagagem(int qtdade, int[] pesos){
+        return qtdade * 10.0;
+    };
+}
